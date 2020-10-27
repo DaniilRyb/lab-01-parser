@@ -1,0 +1,9 @@
+/home/daniilrybakov/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.7319.72/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/c++ -G "CodeBlocks - Unix Makefiles" /home/daniilrybakov/CLionProjects/lab-01-parser
+-- [hunter] Calculating Toolchain-SHA1
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /home/daniilrybakov/.hunter
+-- [hunter] [ Hunter-ID: 9a3594a | Toolchain-ID: 2c824f9 | Config-ID: 48401e9 ]
+-- [hunter] NLOHMANN_JSON_ROOT: /home/daniilrybakov/.hunter/_Base/9a3594a/2c824f9/48401e9/Install (ver.: 3.6.1)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug
