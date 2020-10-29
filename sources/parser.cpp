@@ -2,12 +2,12 @@
 // Created by daniilrybakov on 24.10.2020.
 //
 
-#include "../include/parser.hpp"
-#include "student.cpp"
+#include "parser.hpp"
 #include <fstream>
 
+Parser::Parser() {}
 
-Parser::Parser(const std::string &JsonObject) {
+void Parser::parser(const std::string &JsonObject) {
 
   if(JsonObject.empty()) {
     throw std::invalid_argument("Error! JsonObject is empty!");
@@ -31,7 +31,7 @@ Parser::Parser(const std::string &JsonObject) {
   }
 
   for (auto const &student : data.at("items")) {
-    students.push_back(student_t{student});
+    students.emplace_back(student);
   }
 
 
@@ -49,37 +49,47 @@ Parser::Parser(const std::string &JsonObject) {
 |---------------|--------|------|---------------|
  */
 
-void Parser::Print(student_t &student, std::ostream &os) {
+
+void Parser::Print(const student_t &student) {
+
+std::cout  << "| name        | group  | avg  | debt      |" << std::endl;
+std::cout << "|---------------|--------|------|---------------|" << std::endl;
+
 
   if(std::any_cast<json>(student.GetName()).is_string()) {
-    os <<"|"<< " " << std::any_cast<json>(student.GetName()).get<std::string>()<< "  "; // std::any_cast<json>(student.GetName())
+    std::cout  <<"|"<< " " << std::any_cast<json>(student.GetName()).get<std::string>()<< "  "; // std::any_cast<json>(student.GetName())
   }
   if(std::any_cast<json>(student.GetGroup()).is_number()) {
-    os <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<int>()<< "  ";
+    std::cout  <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<int>()<< "  ";
   }else{
-    os <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<std::string>()<<std::setw(6);
+    std::cout  <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<std::string>()<<std::setw(6);
   }
-  os << "|" << " " << student.GetAvg() << std::setw(2);
+  std::cout  << "|" << " " << student.GetAvg() << std::setw(2);
 
   if(std::any_cast<json>(student.GetDebt()).is_null()) {
-    os << "| " << "null" << std::setw(10) << std::endl;
+    std::cout  << "| " << "null" << std::setw(10) << std::endl;
 
   }else if (std::any_cast<json>(student.GetDebt()).is_number()) {
-    os <<  std::any_cast<json>(student.GetDebt()).get<int>() << " items" << std::setw(9) << "|" << std::endl;
+    std::cout  <<  std::any_cast<json>(student.GetDebt()).get<int>() << " items" << std::setw(9) << "|" << std::endl;
 
   }else{
-    //auto v = std::any_cast<json>(student.GetDebt()).get<std::vector<std::string>>();
-    os << "| " << std::any_cast<json>(student.GetDebt()).get<std::string>() << std::setw(9) << std::endl;
+    std::cout  << "| " << std::any_cast<json>(student.GetDebt()).get<std::string>() << std::setw(9) << std::endl;
 
   }
 
+  std::cout  << "|---------------|--------|------|---------------|" << std::endl;
 
 }
 
-void Parser::PrintStudents(std::vector<student_t> &s, std::ostream os) {
 
-  for (auto &student : s) {
-    Print(student, os);
+void Parser::PrintStudents() {
+
+  for (const auto &student : students) {
+    Print(student);
   }
 
 }
+
+
+
+

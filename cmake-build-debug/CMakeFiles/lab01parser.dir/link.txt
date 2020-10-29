@@ -1,1 +1,0 @@
-/usr/bin/c++   -pedantic -Werror -Wall -Wextra -Wno-unused-command-line-argument -Wshadow -Wnon-virtual-dtor -g   CMakeFiles/lab01parser.dir/sources/student.cpp.o CMakeFiles/lab01parser.dir/sources/parser.cpp.o CMakeFiles/lab01parser.dir/tests/test.cpp.o  -o lab01parser 

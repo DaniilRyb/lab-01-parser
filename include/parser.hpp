@@ -13,13 +13,12 @@ using nlohmann::json;
 
 class Parser {
  public:
-
-  Parser(const std::string &JsonObject);
-  void Print(student_t& student, std::ostream& os);
-  void PrintStudents(std::vector<student_t>& s, std::ostream os);
+  Parser();
+  void parser(const std::string &JsonObject);
+  void Print(const student_t& student);
+  void PrintStudents();
+  //void set_json(const std::string &JsonObject);
   std::vector<student_t> students;
-
-
 };
 
 

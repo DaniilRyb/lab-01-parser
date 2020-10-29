@@ -708,3 +708,7 @@ fstream
 ../include/student.hpp
 /home/daniilrybakov/CLionProjects/lab-01-parser/include/student.hpp
 
+/home/daniilrybakov/CLionProjects/lab-01-parser/tests/test.cpp
+gtest/gtest.h
+-
+

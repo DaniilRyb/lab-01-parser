@@ -76,17 +76,6 @@ CMAKE_BINARY_DIR = /home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-d
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/daniilrybakov/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.7319.72/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -108,6 +97,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/daniilrybakov/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.7319.72/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -142,32 +142,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named tests
-
-# Build rule for target.
-tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
-.PHONY : tests
-
-# fast build rule for target.
-tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-.PHONY : tests/fast
-
-#=============================================================================
-# Target rules for targets named lab-01-parser
-
-# Build rule for target.
-lab-01-parser: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab-01-parser
-.PHONY : lab-01-parser
-
-# fast build rule for target.
-lab-01-parser/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/build
-.PHONY : lab-01-parser/fast
-
-#=============================================================================
 # Target rules for targets named template
 
 # Build rule for target.
@@ -180,15 +154,27 @@ template/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/build
 .PHONY : template/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
 sources/parser.o: sources/parser.cpp.o
 
 .PHONY : sources/parser.o
 
 # target to build an object file
 sources/parser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/parser.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/parser.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/sources/parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/parser.cpp.o
 .PHONY : sources/parser.cpp.o
 
 sources/parser.i: sources/parser.cpp.i
@@ -197,9 +183,8 @@ sources/parser.i: sources/parser.cpp.i
 
 # target to preprocess a source file
 sources/parser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/parser.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/parser.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/sources/parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/parser.cpp.i
 .PHONY : sources/parser.cpp.i
 
 sources/parser.s: sources/parser.cpp.s
@@ -208,9 +193,8 @@ sources/parser.s: sources/parser.cpp.s
 
 # target to generate assembly for a file
 sources/parser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/parser.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/parser.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/sources/parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/parser.cpp.s
 .PHONY : sources/parser.cpp.s
 
 sources/student.o: sources/student.cpp.o
@@ -219,9 +203,8 @@ sources/student.o: sources/student.cpp.o
 
 # target to build an object file
 sources/student.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/student.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/student.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/sources/student.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/student.cpp.o
 .PHONY : sources/student.cpp.o
 
 sources/student.i: sources/student.cpp.i
@@ -230,9 +213,8 @@ sources/student.i: sources/student.cpp.i
 
 # target to preprocess a source file
 sources/student.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/student.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/student.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/sources/student.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/student.cpp.i
 .PHONY : sources/student.cpp.i
 
 sources/student.s: sources/student.cpp.s
@@ -241,9 +223,8 @@ sources/student.s: sources/student.cpp.s
 
 # target to generate assembly for a file
 sources/student.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/student.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/student.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/sources/student.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/student.cpp.s
 .PHONY : sources/student.cpp.s
 
 tests/test.o: tests/test.cpp.o
@@ -253,7 +234,6 @@ tests/test.o: tests/test.cpp.o
 # target to build an object file
 tests/test.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/test.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/tests/test.cpp.o
 .PHONY : tests/test.cpp.o
 
 tests/test.i: tests/test.cpp.i
@@ -263,7 +243,6 @@ tests/test.i: tests/test.cpp.i
 # target to preprocess a source file
 tests/test.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/test.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/tests/test.cpp.i
 .PHONY : tests/test.cpp.i
 
 tests/test.s: tests/test.cpp.s
@@ -273,7 +252,6 @@ tests/test.s: tests/test.cpp.s
 # target to generate assembly for a file
 tests/test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/test.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/tests/test.cpp.s
 .PHONY : tests/test.cpp.s
 
 # Help Target
@@ -285,7 +263,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... lab-01-parser"
 	@echo "... template"
 	@echo "... tests"
 	@echo "... sources/parser.o"

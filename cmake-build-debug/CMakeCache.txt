@@ -159,7 +159,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lab-01-parser
+CMAKE_PROJECT_NAME:STATIC=template
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -246,24 +246,6 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
-
-//Value Computed by CMake
-lab-0-1parser_BINARY_DIR:STATIC=/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug
-
-//Value Computed by CMake
-lab-0-1parser_SOURCE_DIR:STATIC=/home/daniilrybakov/CLionProjects/lab-01-parser
-
-//Value Computed by CMake
-lab-01-parser_BINARY_DIR:STATIC=/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug
-
-//Value Computed by CMake
-lab-01-parser_SOURCE_DIR:STATIC=/home/daniilrybakov/CLionProjects/lab-01-parser
-
-//Value Computed by CMake
-lab01parser_BINARY_DIR:STATIC=/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug
-
-//Value Computed by CMake
-lab01parser_SOURCE_DIR:STATIC=/home/daniilrybakov/CLionProjects/lab-01-parser
 
 //The directory containing a CMake configuration file for nlohmann_json.
 nlohmann_json_DIR:PATH=/home/daniilrybakov/.hunter/_Base/9a3594a/2c824f9/48401e9/Install/lib/cmake/nlohmann_json

@@ -18,18 +18,20 @@ student_t::student_t(const json &j) {
   debt = std::any{j.at("debt")};
 }
 
-std::any student_t::GetGroup() {
+
+
+const std::any student_t::GetGroup() const{
   return group;
 }
 
-std::string student_t::GetName() {
+const std::string student_t::GetName() const{
   return name;
 }
 
-double student_t::GetAvg()  {
+double student_t::GetAvg() const{
   return avg;
 }
 
-std::any student_t::GetDebt()  {
+const std::any student_t::GetDebt() const{
   return debt;
 }
