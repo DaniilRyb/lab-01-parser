@@ -5,6 +5,10 @@
 #ifndef LAB01_PARSER_STUDENT_HPP
 #define LAB01_PARSER_STUDENT_HPP
 
+<<<<<<< HEAD
+=======
+//#include "../../../.hunter/_Base/9a3594a/2c824f9/48401e9/Install/include/nlohmann/json.hpp"
+>>>>>>> a4d81c24a2bb68d8923aea6d821baa59c80df8ae
 #include <any>
 #include <exception>
 #include <string>
