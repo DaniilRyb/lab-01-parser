@@ -1,42 +1,28 @@
 // Copyright 2018 Your Name <your_email>
-/*
+
 #include <gtest/gtest.h>
-TEST(TestParser, HuevuyTest1)
-{
-Parser a;
-std::string JSONFILE(R"({
-  "items": [
-    {
-      "name": "Alex Volodin Andreevich",
-      "group": "IU8-33 the best group forever",
-      "avg": "5.000",
-      "debt": null
-    },
-    {
-      "name": "Sidorov Ivan",
-      "group": 31,
-      "avg": 4,
-      "debt": "C++ Java Python C# Python"
-    },
-    {
-      "name": "Pertov Nikita",
-      "group": "IU8-31",
-      "avg": 3.33,
-      "debt": [
-        "C++",
-        "Linux",
-        "Network"
-      ]
+#include "parser.hpp"
+#include "student.hpp"
+#include <iostream>
+using  nlohmann::json;
+
+
+
+TEST(parser, Test2) {
+
+  student_t st1(json::parse(R"(
+ {
+      "name": "Ivanov Petr",
+      "group": "1",
+      "avg": 4.25,
+      "debt": "C++"
     }
-  ],
-  "_meta": {
-    "count": 3
-  }
-})");
-    EXCEPT_THROW(a.parser(JSONFILE), std::out_of_range);
-    ASSERT_THROW(function, std::out_of_range);
-    ASSERT_EQ(string JSON, value);
-    ASSERT_DOUBLE_EQ(student.getGroup, 123);
+)"));
+  ASSERT_EQ(st1.GetName(), "Ivanov Petr");
+  ASSERT_EQ(std::any_cast<json>(st1.GetGroup()).get<std::string>(), "1");
+  ASSERT_EQ(std::any_cast<json>(st1.GetDebt()).get<std::string>(), "C++");
+  ASSERT_DOUBLE_EQ(st1.GetAvg(), 4.25);
+
 
 }
-*/
+

@@ -14,8 +14,8 @@ set(
 include("tools/gate/cmake/HunterGate.cmake")
 
 HunterGate(
-        URL "https://github.com/cpp-pm/hunter/archive/v0.23.218.tar.gz"
-        SHA1 "9a3594a61227967fb92159339ba326701b287b19"
+        URL "https://github.com/cpp-pm/hunter/archive/v0.23.279.tar.gz"
+        SHA1 "0a8ede485c3e9c1ceed8ccb989ab6c0aba1f4db7"
 )
 
 project(template)
@@ -23,13 +23,14 @@ string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
-#hunter_add_package(GTest)
-#find_package(GTest CONFIG REQUIRED)
+
 
 
 hunter_add_package(nlohmann_json)
 find_package(nlohmann_json CONFIG REQUIRED)
 
+hunter_add_package(GTest)
+find_package(GTest CONFIG REQUIRED)
 
 add_library(template STATIC
         # enum your files and delete this comment
@@ -51,7 +52,7 @@ target_include_directories(tests
         )
 
 target_link_libraries(template PUBLIC nlohmann_json::nlohmann_json)
-#target_link_libraries(tests GTest::main template)
+target_link_libraries(tests GTest::gtest_main template)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)

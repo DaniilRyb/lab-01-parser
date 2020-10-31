@@ -13,13 +13,13 @@ void Parser::parser(const std::string &JsonObject) {
     throw std::invalid_argument("Error! JsonObject is empty!");
   }
 
-  std::ifstream JsonFile{JsonObject};
-  if (!JsonFile.is_open()) {
-    throw std::out_of_range("unable to open json: " + JsonObject);
+  std::ifstream file{JsonObject};
+  if (!file) {
+    throw std::runtime_error{"unable to open json: " + JsonObject};
   }
 
   json data;
-  JsonFile >> data;
+  file >> data;
 
   if (!data.at("items").is_array()) {
     throw std::invalid_argument("Items are not array!");
@@ -31,9 +31,8 @@ void Parser::parser(const std::string &JsonObject) {
   }
 
   for (auto const &student : data.at("items")) {
-    students.emplace_back(student);
+    students.push_back(student);
   }
-
 
 }
 
@@ -50,6 +49,9 @@ void Parser::parser(const std::string &JsonObject) {
  */
 
 
+
+
+
 void Parser::Print(const student_t &student) {
 
 std::cout  << "| name        | group  | avg  | debt      |" << std::endl;
@@ -59,6 +61,9 @@ std::cout << "|---------------|--------|------|---------------|" << std::endl;
   if(std::any_cast<json>(student.GetName()).is_string()) {
     std::cout  <<"|"<< " " << std::any_cast<json>(student.GetName()).get<std::string>()<< "  "; // std::any_cast<json>(student.GetName())
   }
+
+
+
   if(std::any_cast<json>(student.GetGroup()).is_number()) {
     std::cout  <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<int>()<< "  ";
   }else{

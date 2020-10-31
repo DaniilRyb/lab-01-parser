@@ -8,16 +8,16 @@
 #include "student.hpp"
 #include <iostream>
 #include <iomanip>
+
 using nlohmann::json;
 
-
 class Parser {
+
  public:
   Parser();
   void parser(const std::string &JsonObject);
   void Print(const student_t& student);
   void PrintStudents();
-  //void set_json(const std::string &JsonObject);
   std::vector<student_t> students;
 };
 
