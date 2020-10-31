@@ -1,23 +1,16 @@
-//
-// Created by daniilrybakov on 24.10.2020.
-//
-
+// Copyright 2020 Daniil Rybakov
 #include "parser.hpp"
 #include <fstream>
 
 Parser::Parser() {}
-
 void Parser::parser(const std::string &JsonObject) {
-
   if(JsonObject.empty()) {
     throw std::invalid_argument("Error! JsonObject is empty!");
   }
-
   std::ifstream file{JsonObject};
   if (!file) {
     throw std::runtime_error{"unable to open json: " + JsonObject};
   }
-
   json data;
   file >> data;
 
@@ -29,29 +22,10 @@ void Parser::parser(const std::string &JsonObject) {
   if (data.at("items").size() != data.at("_meta").at("count").get<size_t>()) {
     throw std::invalid_argument("Error! _meta != number of students");
   }
-
   for (auto const &student : data.at("items")) {
     students.push_back(student);
   }
-
 }
-
-
-/*
-| name          | group  | avg  | debt          |
-|---------------|--------|------|---------------|
-| Ivanov Petr   | 1      | 4.25 | null          |
-|---------------|--------|------|---------------|
-| Sidorov Ivan  | 31     | 4.00 | C++           |
-|---------------|--------|------|---------------|
-| Pertov Nikita | IU8-31 | 3.33 | 3 items       |
-|---------------|--------|------|---------------|
- */
-
-
-
-
-
 void Parser::Print(const student_t &student) {
 
 std::cout  << "| name        | group  | avg  | debt      |" << std::endl;

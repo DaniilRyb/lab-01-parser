@@ -1,5 +1,4 @@
-// Copyright 2018 Your Name <your_email>
-
+// Copyright 2020 Daniil Rybakov pohtaworld7@gmail.com
 #include <gtest/gtest.h>
 #include "parser.hpp"
 #include "student.hpp"

@@ -1,11 +1,9 @@
 //
 //
-// Created by daniilrybakov on 24.10.2020.
+// Created by daniilrybakov on 31.10.2020.
 //
-
-#ifndef LAB01_PARSER_STUDENT_HPP
-#define LAB01_PARSER_STUDENT_HPP
-
+#ifndef INCLUDE_STUDENT_HPP_
+#define INCLUDE_STUDENT_HPP_
 
 #include <any>
 #include <exception>

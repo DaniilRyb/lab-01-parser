@@ -1,6 +1,5 @@
 #include "student.hpp"
 
-
 student_t::student_t() {}
 
 student_t::student_t(const json &j) {
