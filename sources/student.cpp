@@ -4,22 +4,22 @@
 #include "student.hpp"
 
 student_t::student_t() {}
-student_t::student_t(const json &j) {
-  if (j.empty()){
+student_t::student_t(const json &js) {
+  if (js.empty()){
     throw std::invalid_argument("Object student is empty");
   }
 
-  name = j.at("name").get<std::string>();
-  group = std::any{j.at("group")};
+  name = js.at("name").get<std::string>();
+  group = std::any{js.at("group")};
 
-  if (j.at("avg").is_string()) {
-    avg = std::stod(j.at("avg").get<std::string>());
-  } else if (j.at("avg").is_number()) {
-    avg = j.at("avg").get<double>();
+  if (js.at("avg").is_string()) {
+    avg = std::stod(js.at("avg").get<std::string>());
+  } else if (js.at("avg").is_number()) {
+    avg = js.at("avg").get<double>();
   }else{
     throw std::invalid_argument("Avg cannot be another type!");
   }
-  debt = std::any{j.at("debt")};
+  debt = std::any{js.at("debt")};
 }
 
 
