@@ -1,4 +1,6 @@
-// Copyright [2020] Daniil Rybakov
+//
+// Copyright 2020 Daniil Rybakov <pochtaworld7@gmail.com>
+//
 #include "student.hpp"
 
 student_t::student_t() {}

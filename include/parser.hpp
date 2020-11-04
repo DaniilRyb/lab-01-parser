@@ -1,4 +1,6 @@
-// Copyright 2020 <Daniil Rybakov>
+//
+// Copyright 2020 Daniil Rybakov <pochtaworld7@gmail.com>
+//
 #ifndef INCLUDE_PARSER_HPP_
 #define INCLUDE_PARSER_HPP_
 #include "student.hpp"
