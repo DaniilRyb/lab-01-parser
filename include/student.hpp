@@ -1,4 +1,4 @@
-//
+// Copyright 2020 <pochtaworld7@gmail.com>
 
 #ifndef INCLUDE_STUDENT_HPP_
 #define INCLUDE_STUDENT_HPP_
@@ -27,5 +27,4 @@ class student_t {
   double GetAvg() const;
   std::any GetDebt() const;
 };
-
-#endif  // LAB01_PARSER_STUDENT_HPP
+#endif  // INCLUDE_STUDENT_HPP_
