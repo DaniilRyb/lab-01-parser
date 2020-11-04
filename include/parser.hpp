@@ -13,7 +13,7 @@ class Parser {
 
  public:
   Parser();
-  void parser(const std::string &JsonObject);
+  Parser(const std::string &JsonObject);
   void Print(const student_t& student);
   void PrintStudents();
   std::vector<student_t> students;

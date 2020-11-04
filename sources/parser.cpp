@@ -3,29 +3,65 @@
 #include <fstream>
 
 Parser::Parser() {}
-void Parser::parser(const std::string &JsonObject) {
-  if(JsonObject.empty()) {
-    throw std::invalid_argument("Error! JsonObject is empty!");
-  }
-  std::ifstream file{JsonObject};
-  if (!file) {
-    throw std::runtime_error{"unable to open json: " + JsonObject};
-  }
-  json data;
-  file >> data;
-
-  if (!data.at("items").is_array()) {
-    throw std::invalid_argument("Items are not array!");
-  }
 
 
-  if (data.at("items").size() != data.at("_meta").at("count").get<size_t>()) {
-    throw std::invalid_argument("Error! _meta != number of students");
+Parser::Parser(const std::string &Json_path) {
+  // json j;
+  // if (JsonObject.empty()) {
+  // throw std::invalid_argument("Json path is incorrect!");
+  // }
+  // std::ifstream file{JsonObject};
+  // if (!file) {
+  // throw std::runtime_error("unable to open json: " + JsonObject);
+  //}
+  // file >> j;
+  // j = json::parse(JsonObject);
+
+  // if (j.empty()) {
+  // throw std::invalid_argument("Object array is empty");
+  //}
+  // if (!j.at("items").is_array()) {
+  // throw std::invalid_argument("Json file is not array!");
+  //}
+  // if (j.at("items").size() != j.at("_meta").at("count")) {
+  // throw std::out_of_range(
+  //   "count is not equal to the actual number of objects in items!");
+  //}
+  // for (auto const& student : j.at("items")) {
+  // students.push_back(student_t(student));
+  //}
+  //}
+  json j;
+  if (Json_path[0] != '{') {
+    if (Json_path.empty()) {
+      throw std::invalid_argument("Json path is incorrect!");
+    }
+    std::ifstream file{Json_path};
+    if (!file) {
+      throw std::runtime_error("unable to open json: " + Json_path);
+    }
+    file >> j;
+  } else {
+    j = json::parse(Json_path);
   }
-  for (auto const &student : data.at("items")) {
-    students.push_back(student);
+
+  if (j.empty()) {
+    throw std::invalid_argument("Object array is empty");
+  }
+  if (!j.at("items").is_array()) {
+    throw std::invalid_argument("Json file is not array!");
+  }
+  if (j.at("items").size() != j.at("_meta").at("count")) {
+    throw std::out_of_range("count is not equal to the actual number of objects in items!");
+  }
+  for (auto const &student : j.at("items")) {
+    student_t s(student);
+    students.push_back(s);
   }
 }
+
+
+
 void Parser::Print(const student_t &student) {
 
 std::cout  << "| name        | group  | avg  | debt      |" << std::endl;
