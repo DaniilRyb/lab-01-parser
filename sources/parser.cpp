@@ -5,44 +5,19 @@
 Parser::Parser() {}
 
 
-Parser::Parser(const std::string &Json_path) {
-  // json j;
-  // if (JsonObject.empty()) {
-  // throw std::invalid_argument("Json path is incorrect!");
-  // }
-  // std::ifstream file{JsonObject};
-  // if (!file) {
-  // throw std::runtime_error("unable to open json: " + JsonObject);
-  //}
-  // file >> j;
-  // j = json::parse(JsonObject);
-
-  // if (j.empty()) {
-  // throw std::invalid_argument("Object array is empty");
-  //}
-  // if (!j.at("items").is_array()) {
-  // throw std::invalid_argument("Json file is not array!");
-  //}
-  // if (j.at("items").size() != j.at("_meta").at("count")) {
-  // throw std::out_of_range(
-  //   "count is not equal to the actual number of objects in items!");
-  //}
-  // for (auto const& student : j.at("items")) {
-  // students.push_back(student_t(student));
-  //}
-  //}
+Parser::Parser(const std::string &JsonObject) {
   json j;
-  if (Json_path[0] != '{') {
-    if (Json_path.empty()) {
+  if (JsonObject[0] != '{') {
+    if (JsonObject.empty()) {
       throw std::invalid_argument("Json path is incorrect!");
     }
-    std::ifstream file{Json_path};
+    std::ifstream file{JsonObject};
     if (!file) {
-      throw std::runtime_error("unable to open json: " + Json_path);
+      throw std::runtime_error("unable to open json: " + JsonObject);
     }
     file >> j;
   } else {
-    j = json::parse(Json_path);
+    j = json::parse(JsonObject);
   }
 
   if (j.empty()) {
