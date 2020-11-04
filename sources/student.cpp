@@ -2,7 +2,6 @@
 #include "student.hpp"
 
 student_t::student_t() {}
-
 student_t::student_t(const json &j) {
   if (j.empty()){
     throw std::invalid_argument("Object student is empty");
