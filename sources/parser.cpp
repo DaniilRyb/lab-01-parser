@@ -38,15 +38,16 @@ void Parser::Print(const student_t &student) {
 std::cout  << "| name        | group  | avg  | debt      |" << std::endl;
 std::cout << "|---------------|--------|------|---------------|" << std::endl;
   if (std::any_cast<json>(student.GetName()).is_string()) {
-    std::cout  <<"|"<< " " <<
-        std::any_cast<json>(student.GetName()).get<std::string>()<< "  ";
+    std::cout  << "|" << " " <<
+        std::any_cast<json>(student.GetName()).get<std::string>() << "  ";
   }
   if (std::any_cast<json>(student.GetGroup()).is_number()) {
-    std::cout  <<"|" << " " <<
+    std::cout  << "|" << " " <<
         std::any_cast<json>(student.GetGroup()).get<int>()<< "  ";
   }else{
-    std::cout  <<"|" << " " <<
-        std::any_cast<json>(student.GetGroup()).get<std::string>()<<std::setw(6);
+    std::cout  << "|" << " " <<
+        std::any_cast<json>(student.GetGroup()).get<std::string>()
+            << std::setw(6);
   }
   std::cout  << "|" << " " << student.GetAvg() << std::setw(2);
   if (std::any_cast<json>(student.GetDebt()).is_null()) {
@@ -59,7 +60,8 @@ std::cout << "|---------------|--------|------|---------------|" << std::endl;
         std::any_cast<json>(student.GetDebt()).get<std::string>()
         << std::setw(9) << std::endl;
   }
-  std::cout  << "|---------------|--------|------|---------------|" << std::endl;
+  std::cout  << "|---------------|--------|------|---------------|"
+            << std::endl;
 }
 void Parser::PrintStudents() {
   for (const auto &student : students) {

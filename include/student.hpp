@@ -1,5 +1,4 @@
-
-// Created by daniilrybakov on 31.10.2020.
+//
 
 #ifndef INCLUDE_STUDENT_HPP_
 #define INCLUDE_STUDENT_HPP_
@@ -22,7 +21,7 @@ class student_t {
 
  public:
   student_t();
-  student_t(const json& j);
+  explicit student_t(const json& j);
   std::string GetName() const;
   std::any GetGroup() const;
   double GetAvg() const;
