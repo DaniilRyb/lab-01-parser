@@ -1,0 +1,5 @@
+/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles/template.dir
+/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles/test.dir
+/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles/tests.dir
+/home/daniilrybakov/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles/edit_cache.dir

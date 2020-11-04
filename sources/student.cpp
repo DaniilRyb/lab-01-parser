@@ -1,3 +1,4 @@
+// Copyright [2020] Daniil Rybakov
 #include "student.hpp"
 
 student_t::student_t() {}
@@ -36,6 +37,3 @@ double student_t::GetAvg() const{
  std::any student_t::GetDebt() const{
   return debt;
 }
-
-
-student_t::~student_t() {}

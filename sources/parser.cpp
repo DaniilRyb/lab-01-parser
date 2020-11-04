@@ -52,7 +52,7 @@ Parser::Parser(const std::string &Json_path) {
     throw std::invalid_argument("Json file is not array!");
   }
   if (j.at("items").size() != j.at("_meta").at("count")) {
-    throw std::out_of_range("count is not equal to the actual number of objects in items!");
+    throw std::out_of_range("count is not equal!");
   }
   for (auto const &student : j.at("items")) {
     student_t s(student);
@@ -63,46 +63,32 @@ Parser::Parser(const std::string &Json_path) {
 
 
 void Parser::Print(const student_t &student) {
-
 std::cout  << "| name        | group  | avg  | debt      |" << std::endl;
 std::cout << "|---------------|--------|------|---------------|" << std::endl;
-
-
   if(std::any_cast<json>(student.GetName()).is_string()) {
     std::cout  <<"|"<< " " << std::any_cast<json>(student.GetName()).get<std::string>()<< "  "; // std::any_cast<json>(student.GetName())
   }
-
-
-
   if(std::any_cast<json>(student.GetGroup()).is_number()) {
     std::cout  <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<int>()<< "  ";
   }else{
     std::cout  <<"|" << " " << std::any_cast<json>(student.GetGroup()).get<std::string>()<<std::setw(6);
   }
   std::cout  << "|" << " " << student.GetAvg() << std::setw(2);
-
   if(std::any_cast<json>(student.GetDebt()).is_null()) {
     std::cout  << "| " << "null" << std::setw(10) << std::endl;
-
   }else if (std::any_cast<json>(student.GetDebt()).is_number()) {
     std::cout  <<  std::any_cast<json>(student.GetDebt()).get<int>() << " items" << std::setw(9) << "|" << std::endl;
-
   }else{
     std::cout  << "| " << std::any_cast<json>(student.GetDebt()).get<std::string>() << std::setw(9) << std::endl;
-
   }
-
   std::cout  << "|---------------|--------|------|---------------|" << std::endl;
-
 }
 
 
 void Parser::PrintStudents() {
-
   for (const auto &student : students) {
     Print(student);
   }
-
 }
 
 
