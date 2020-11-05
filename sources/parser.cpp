@@ -4,7 +4,6 @@
 //
 #include "parser.hpp"
 #include <fstream>
-
 Parser::Parser() {}
 Parser::Parser(const std::string &JsonObject) {
   json j;
@@ -42,8 +41,8 @@ void Parser::Print() {
   for (const auto &student : students) {
     size_t length_of_field_name = 15;
     int length_of_field_group = 8, length_of_field_debt = 15;
-    size_t  length_of_field_avg = 6;
-    if (std::any_cast<json>(student.GetName()).is_string()) { // parsing of name
+    //size_t  length_of_field_avg = 6;
+    if (std::any_cast<json>(student.GetName()).is_string()) { //parsing of name
       if (std::any_cast<json>(student.GetName()).get<std::string>().length() >=
           length_of_field_name) {
         length_of_field_name =
@@ -54,7 +53,7 @@ void Parser::Print() {
                   << std::setw(length_of_field_name);
       }
     }
-    if (std::any_cast<json>(student.GetGroup()).is_number()) {  // parsing of group
+    if (std::any_cast<json>(student.GetGroup()).is_number()) {
       if (std::any_cast<json>(student.GetGroup()).get<int>() >=
           length_of_field_group) {
         length_of_field_group =
@@ -68,21 +67,9 @@ void Parser::Print() {
                   << std::setw(length_of_field_group);
       }
     }
-    if (std::any_cast<json>(student.GetAvg()).is_string()) {
-      if (std::any_cast<json>(student.GetAvg()).get<std::string>().length()
-          >= length_of_field_avg) {
-        length_of_field_avg = std::any_cast<json>(student.GetAvg()).
-            get<std::string>().length();
-      }
-      std::cout << "| "
-                << std::any_cast<json>(student.GetGroup()).get<std::string>()
-                << std::setw(length_of_field_avg);
-      if (std::any_cast<json>(student.GetAvg()).is_number()) {
-        std::cout << "| "
-                  << std::any_cast<json>(student.GetGroup()).get<double>()
-                        << std::setw(length_of_field_group);
-      }
-    }
+    std::cout << "| "
+              << student.GetAvg()
+              << std::setw(length_of_field_group);
     if (std::any_cast<json>(student.GetDebt()).is_null()) { // parsing of dept
       std::cout << "| null" << std::setw(length_of_field_debt) << std::endl;
     }
