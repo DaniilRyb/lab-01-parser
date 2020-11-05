@@ -34,41 +34,68 @@ Parser::Parser(const std::string &JsonObject) {
     students.push_back(s);
   }
 }
-void Parser::Print(const student_t &student) {
-std::cout  << "| name        | group  | avg  | debt      |" << std::endl;
-std::cout << "|---------------|--------|------|---------------|" << std::endl;
-  if (std::any_cast<json>(student.GetName()).is_string()) {
-    std::cout  << "|" << " " <<
-        std::any_cast<json>(student.GetName()).get<std::string>() << "  ";
-  }
-  if (std::any_cast<json>(student.GetGroup()).is_number()) {
-    std::cout  << "|" << " " <<
-        std::any_cast<json>(student.GetGroup()).get<int>()<< "  ";
-  }else{
-    std::cout  << "|" << " " <<
-        std::any_cast<json>(student.GetGroup()).get<std::string>()
-            << std::setw(6);
-  }
-  std::cout  << "|" << " " << student.GetAvg() << std::setw(2);
-  if (std::any_cast<json>(student.GetDebt()).is_null()) {
-    std::cout  << "| " << "null" << std::setw(10) << std::endl;
-  } else if (std::any_cast<json>(student.GetDebt()).is_number()) {
-    std::cout  <<  std::any_cast<json>(student.GetDebt()).get<int>()
-        << " items" << std::setw(9) << "|" << std::endl;
-  }else{
-    std::cout  << "| " <<
-        std::any_cast<json>(student.GetDebt()).get<std::string>()
-        << std::setw(9) << std::endl;
-  }
-  std::cout  << "|---------------|--------|------|---------------|"
-            << std::endl;
-}
-void Parser::PrintStudents() {
+void Parser::Print() {
+  std::string s1 = "| name          | group  | avg  | debt          |";
+  std::string s2 = "|---------------|--------|------|---------------|";
+  std::cout << s1 << std::endl;
+  std::cout << s2 << std::endl;
   for (const auto &student : students) {
-    Print(student);
-  }
+    size_t length_of_field_name = 15;
+    int length_of_field_group = 8, length_of_field_debt = 15;
+    size_t  length_of_field_avg = 6;
+    if (std::any_cast<json>(student.GetName()).is_string()) { // parsing of name
+      if (std::any_cast<json>(student.GetName()).get<std::string>().length() >=
+          length_of_field_name) {
+        length_of_field_name =
+            std::any_cast<json>(student.GetName()).get<std::string>().length();
+      } else {
+        std::cout << "| "
+                  << std::any_cast<json>(student.GetName()).get<std::string>()
+                  << std::setw(length_of_field_name);
+      }
+    }
+    if (std::any_cast<json>(student.GetGroup()).is_number()) {  // parsing of group
+      if (std::any_cast<json>(student.GetGroup()).get<int>() >=
+          length_of_field_group) {
+        length_of_field_group =
+            std::any_cast<json>(student.GetGroup()).get<int>();
+      } else if (std::any_cast<json>(student.GetAvg()).is_string()) {
+        std::cout << "| "
+                  << std::any_cast<json>(student.GetGroup()).get<std::string>()
+                  << std::setw(length_of_field_group);
+      } else {
+        std::cout << "| " << std::any_cast<json>(student.GetGroup()).get<int>()
+                  << std::setw(length_of_field_group);
+      }
+    }
+    if (std::any_cast<json>(student.GetAvg()).is_string()) {
+      if (std::any_cast<json>(student.GetAvg()).get<std::string>().length()
+          >= length_of_field_avg) {
+        length_of_field_avg = std::any_cast<json>(student.GetAvg()).
+            get<std::string>().length();
+      }
+      std::cout << "| "
+                << std::any_cast<json>(student.GetGroup()).get<std::string>()
+                << std::setw(length_of_field_avg);
+      if (std::any_cast<json>(student.GetAvg()).is_number()) {
+        std::cout << "| "
+                  << std::any_cast<json>(student.GetGroup()).get<double>()
+                        << std::setw(length_of_field_group);
+      }
+    }
+    if (std::any_cast<json>(student.GetDebt()).is_null()) { // parsing of dept
+      std::cout << "| null" << std::setw(length_of_field_debt) << std::endl;
+    }
+     if (std::any_cast<json>(student.GetDebt()).is_string()){
+      std::cout << "| "
+                << std::any_cast<json>(student.GetDebt()).get<std::string>()
+                << std::setw(length_of_field_debt) << std::endl;
+       } else {
+      std::string it = std::to_string(std::any_cast<json>(student.GetDebt())
+                                          .get<std::vector<std::string>>()
+                                          .size()) + " items";
+      std::cout << "| " << it << std::setw(length_of_field_debt) << std::endl;
+    }
+     }
+  std::cout << "|---------------|--------|------|---------------|";
 }
-
-
-
-

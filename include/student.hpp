@@ -16,7 +16,7 @@ class student_t {
  private:
   std::string name;
   std::any group;
-  double avg = 0;
+  std::any avg;
   std::any debt;
 
  public:
@@ -24,7 +24,7 @@ class student_t {
   explicit student_t(const json& j);
   std::string GetName() const;
   std::any GetGroup() const;
-  double GetAvg() const;
+  std::any GetAvg() const;
   std::any GetDebt() const;
 };
 #endif  // INCLUDE_STUDENT_HPP_

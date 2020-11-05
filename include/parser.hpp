@@ -14,8 +14,8 @@ class Parser {
  public:
   Parser();
   explicit Parser(const std::string &JsonObject);
-  void Print(const student_t& student);
-  void PrintStudents();
+  void Print();
+  //void PrintStudents();
   std::vector<student_t> students;
 };
 #endif // INCLUDE_PARSER_HPP_"
