@@ -9,6 +9,7 @@
 #include <nlohmann/json.hpp>
 #include "string"
 #include <vector>
+
 using nlohmann::json;
 class Parser {
  public:

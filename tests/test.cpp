@@ -18,7 +18,6 @@ TEST(parser, TheFirstCheckIsValidStudent) {
   ASSERT_EQ(std::any_cast<json>(st1.GetGroup()).get<std::string>(), "1");
   ASSERT_DOUBLE_EQ(st1.GetAvg(), 4.25);
   ASSERT_TRUE(std::any_cast<json>(st1.GetDebt()).is_null());
-
 }
 TEST(parser, TheSecondCheckIsValidStudent) {
   student_t st2{json::parse(R"(
@@ -88,3 +87,4 @@ TEST(parser, Throw_Exceptions_Test1) {
     "count": 4
   }})")), std::out_of_range);
  }
+ 
