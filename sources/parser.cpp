@@ -34,13 +34,8 @@ Parser::Parser(const std::string &JsonObject) {
   }
 }
 void Parser::Print() {
-  //std::string s1 = "|name          |group  |avg  |debt          |";
-  //std::string s2 = "|--------------|-------|-----|--------------|";
   std::string s="|"; // string "-"
   std::string headerTable; // headerTable
-  // size_t length_of_field_name = 15;
-  //int length_of_field_group = 8, length_of_field_debt = 15;
-  //size_t  length_of_field_avg = 6;
   std::vector<size_t> new_fields = {15,8,6,15}; // пока нули
   std::vector<std::string> header = {"|name","|group","|avg","|debt"};
   for (const auto &student : students) {
