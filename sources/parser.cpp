@@ -105,6 +105,7 @@ void Parser::Print() {
     }
     headerTable+="|";
     std::cout << headerTable << std::endl;
+    std::cout << s << std::endl;
     std::cout << "|" << student.GetName() << std::setw(new_fields[0]);
     if (std::any_cast<json>(student.GetGroup()).is_string()) {
       std::cout << "|" <<
