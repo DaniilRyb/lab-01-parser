@@ -41,7 +41,7 @@ std::ostream& operator<<(std::ostream& out, std::vector<student_t> st) {
   st = s_t;
   std::string s = "|";
   std::string headerTable ="";
-  size_t a1=0, a2=0, a3=0, a4=0;
+  size_t a1 = 0, a2 = 0, a3 = 0, a4 = 0;
   std::vector<size_t> new_fields = {15, 8, 6, 15};
   std::vector<std::string> header = {"|name", "|group", "|avg", "|debt"};
   for (const auto &student : st) {
