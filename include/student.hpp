@@ -21,10 +21,10 @@ class student_t {
  public:
   student_t();
   explicit student_t(const json& j);
-  std::string GetName() const;
-  std::any GetGroup() const;
+  const std::string GetName() const;
+  const std::any GetGroup() const;
   double GetAvg() const;
-  std::any GetDebt() const;
+  const std::any GetDebt() const;
 };
 #endif  // INCLUDE_STUDENT_HPP_
 

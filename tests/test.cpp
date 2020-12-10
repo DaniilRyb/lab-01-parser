@@ -5,6 +5,7 @@
 #include <iostream>
 #include "parser.hpp"
 #include "student.hpp"
+std::vector<student_t> students;
 TEST(parser, TheFirstCheckIsValidStudent) {
   student_t st1(json::parse(R"(
  {
@@ -46,6 +47,7 @@ TEST(parser, TheSecondCheckIsValidStudent) {
       ]
     }
 )"));
+
   ASSERT_EQ(st3.GetName(), "Petrov Nikita");
   ASSERT_EQ(std::any_cast<json>(st3.GetGroup()).get<std::string>(), "IU8-33");
   ASSERT_DOUBLE_EQ(st3.GetAvg(), 3.33);
