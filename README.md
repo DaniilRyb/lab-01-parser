@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/DaniilRyb/lab-01-parser.svg?branch=master)](https://travis-ci.com/DaniilRyb/lab-01-parser)
 # Лабораторная работа № 1
 
 ### Задание
